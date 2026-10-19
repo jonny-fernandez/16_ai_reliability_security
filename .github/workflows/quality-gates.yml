@@ -1,0 +1,45 @@
+name: Project 16 offline cross-platform evaluation
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  offline-ubuntu:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install bounded offline dependencies
+        run: python -m pip install -r requirements-cp3.txt
+      - name: Full suite (no skipped tests)
+        run: |
+          python -m pytest -q -o addopts= --junitxml=pytest-results.xml
+          python -c "import xml.etree.ElementTree as E; r=E.parse('pytest-results.xml').getroot(); assert int(r.attrib.get('skipped','0'))==0; assert int(r.attrib.get('failures','0'))==0; assert int(r.attrib.get('errors','0'))==0"
+      - name: Offline replay, negative gates, manifest verification, candidate audit
+        run: python scripts/validate_cp4.py
+      - name: Verify actual Git index on checkout
+        run: python scripts/release_audit.py --mode index --output outputs/cp4_github_index_audit.json
+  offline-windows:
+    runs-on: windows-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install bounded offline dependencies
+        run: python -m pip install -r requirements-cp3.txt
+      - name: Full suite (no skipped tests)
+        shell: pwsh
+        run: |
+          python -m pytest -q -o addopts= --junitxml=pytest-results.xml
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python -c "import xml.etree.ElementTree as E; r=E.parse('pytest-results.xml').getroot(); assert int(r.attrib.get('skipped','0'))==0; assert int(r.attrib.get('failures','0'))==0; assert int(r.attrib.get('errors','0'))==0"
+      - name: Offline replay, negative gates, manifest verification, candidate audit
+        run: python scripts/validate_cp4.py
+      - name: Verify actual Git index on checkout
+        run: python scripts/release_audit.py --mode index --output outputs/cp4_github_index_audit.json

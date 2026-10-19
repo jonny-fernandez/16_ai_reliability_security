@@ -1,0 +1,35 @@
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+# All real environment and per-developer credential files are private.
+.env
+**/.env
+.env.*
+**/.env.*
+!.env.example
+!**/.env.example
+*.db
+*.sqlite
+*.sqlite3
+mlruns/
+artifacts/*
+!artifacts/.gitkeep
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+logs/*
+!logs/.gitkeep
+.DS_Store
+Thumbs.db
+# Generated evaluation outputs and evidence must be reviewed before publication.
+outputs/*
+!outputs/.gitkeep
+*.coverage
+.coverage
+htmlcov/
+*.egg-info/

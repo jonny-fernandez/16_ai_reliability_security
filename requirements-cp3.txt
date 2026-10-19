@@ -1,0 +1,6 @@
+# Only the dependencies actually needed for offline CP1-CP3 validation.
+# CP3 does NOT require paid provider SDKs, a hosted OTel collector, Locust,
+# an external database, or a cloud deployment.
+pydantic>=2.8,<3
+pytest>=8.3,<10
+opentelemetry-sdk>=1.27,<2

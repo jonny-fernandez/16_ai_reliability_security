@@ -1,0 +1,26 @@
+{
+  "candidate_approval": false,
+  "dataset_name": "cp2_reference_development_scenarios",
+  "dataset_provenance": "Hand-authored synthetic deterministic fixtures with SHA-256 checksum file",
+  "dataset_version": "cp2_reference_dev_2026_10",
+  "evaluation_unit": "stateless_reference_invocation",
+  "intended_use": "Offline deterministic synthetic test-harness development and authorization boundary regression checks",
+  "limitations": [
+    "Development suite of only ten synthetic cases; no independent holdout",
+    "No real LLM, stochastic evaluation, API calls or actual external writes",
+    "No protected-attribute labels, deployment telemetry or population representativeness"
+  ],
+  "oracle": "deterministic_exact_match",
+  "owner_role": "portfolio_evaluation_maintainer",
+  "prohibited_use": [
+    "Live deployment or real-system authorization enforcement",
+    "Demographic fairness claims from scenario categories",
+    "Production security certification or compliance attestation"
+  ],
+  "review_status": "DEVELOPMENT_UNAPPROVED",
+  "schema_version": "1.0",
+  "sensitivity": "SYNTHETIC_NON_SENSITIVE",
+  "subgroup_policy": "scenario_categories_only_not_demographic_fairness",
+  "system_id": "local_reference_assistant_v1",
+  "system_version": "cp2_local_reference_v1"
+}

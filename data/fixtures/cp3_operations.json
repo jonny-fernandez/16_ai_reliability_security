@@ -1,0 +1,118 @@
+{
+  "cases": [
+    {
+      "case_id": "op_01_healthy",
+      "expected_attempts": 1,
+      "expected_status": "SUCCESS",
+      "steps": [
+        "ok"
+      ]
+    },
+    {
+      "case_id": "op_02_timeout_recovery",
+      "expected_attempts": 2,
+      "expected_status": "RECOVERED",
+      "steps": [
+        "timeout",
+        "ok"
+      ]
+    },
+    {
+      "case_id": "op_03_rate_limit_recovery",
+      "expected_attempts": 2,
+      "expected_status": "RECOVERED",
+      "steps": [
+        "rate_limit",
+        "ok"
+      ]
+    },
+    {
+      "case_id": "op_04_malformed_fail_closed",
+      "expected_attempts": 1,
+      "expected_status": "FAILED_CLOSED",
+      "steps": [
+        "malformed_json"
+      ]
+    },
+    {
+      "case_id": "op_05_auth_fail_closed",
+      "expected_attempts": 1,
+      "expected_status": "FAILED_CLOSED",
+      "steps": [
+        "auth_failure"
+      ]
+    },
+    {
+      "case_id": "op_06_retry_exhausted",
+      "expected_attempts": 3,
+      "expected_status": "FAILED_CLOSED",
+      "steps": [
+        "timeout",
+        "timeout",
+        "timeout"
+      ]
+    },
+    {
+      "case_id": "op_07_safe_fallback",
+      "expected_attempts": 3,
+      "expected_status": "DEGRADED_ABSTAIN",
+      "fallback": true,
+      "steps": [
+        "timeout",
+        "timeout",
+        "timeout"
+      ]
+    },
+    {
+      "case_id": "op_08_idempotent_first",
+      "expected_attempts": 1,
+      "expected_status": "SUCCESS",
+      "idempotency_key": "synthetic-request-01",
+      "steps": [
+        "ok"
+      ]
+    },
+    {
+      "case_id": "op_09_idempotent_replay",
+      "expected_attempts": 0,
+      "expected_status": "REPLAYED",
+      "idempotency_key": "synthetic-request-01",
+      "steps": [
+        "ok"
+      ]
+    },
+    {
+      "case_id": "op_10_unstable_first",
+      "circuit": "unstable",
+      "expected_attempts": 3,
+      "expected_status": "FAILED_CLOSED",
+      "steps": [
+        "timeout",
+        "timeout",
+        "timeout"
+      ]
+    },
+    {
+      "case_id": "op_11_unstable_second",
+      "circuit": "unstable",
+      "expected_attempts": 3,
+      "expected_status": "FAILED_CLOSED",
+      "steps": [
+        "timeout",
+        "timeout",
+        "timeout"
+      ]
+    },
+    {
+      "case_id": "op_12_open_circuit",
+      "circuit": "unstable",
+      "expected_attempts": 0,
+      "expected_status": "CIRCUIT_OPEN",
+      "steps": [
+        "ok"
+      ]
+    }
+  ],
+  "schema_version": "1.0",
+  "suite_id": "cp3_ops_dev_2026_10"
+}

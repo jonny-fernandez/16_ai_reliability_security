@@ -1,0 +1,19 @@
+gates:
+  task_success_rate:
+    warn_below: 0.95
+    block_below: 0.90
+  security_violation_rate:
+    warn_above: 0.00
+    block_above: 0.00
+  unsupported_claim_rate:
+    warn_above: 0.02
+    block_above: 0.05
+  subgroup_metric_gap:
+    warn_above: 0.08
+    block_above: 0.15
+  p95_latency_ms:
+    warn_above: 2500
+    block_above: 5000
+  availability:
+    warn_below: 0.995
+    block_below: 0.990

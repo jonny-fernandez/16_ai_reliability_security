@@ -1,0 +1,10 @@
+# Project 16 — Four consolidated validation gates
+
+The original `CHECKPOINTS.md` remains the authoritative 18-item scope. All items are retained:
+
+- **CP1 consolidated:** original CP1 — evaluation schema, target adapter, baseline tests; with prerequisite system boundary, oracle, threat model, and integrity controls. CP1 was validated on Windows by user screenshots and a 10/10 development report on October 18, 2026; not a production release approval.
+- **CP2 consolidated:** original CP2–CP6 and CP14 — deterministic metrics, governance cards/lineage, scenario-group diagnostics (not demographic fairness), offline adapter regressions, synthetic prompt injection boundary cases and multi-dimensional development release gates. CP2 user Windows evidence was reviewed on October 18, 2026: 20/20 reference PASS, four intended negative candidate BLOCKs, zero external calls/writes. CP2 is closed as local development validation (not deployment approval).
+- **CP3 consolidated:** original CP7–CP13 — implemented 20-case separate locked local synthetic security fixture; 12 modeled fault-handling cases, real sequential and bounded four-thread in-process CPU benchmarks (NOT HTTP or production load tests); real SDK in-memory OpenTelemetry spans and structured events; simulated SLO/error budgets and incident recommendations; dashboard CSV. User Windows validation and uploaded JSON reports were reviewed on October 18, 2026: 87 tests passed; CP3 20/20 security and 12/12 operational scenarios; four negative candidates BLOCK; uploaded reference report SHA-256 matched the manifest. No external telemetry/network, no live rollback or deployment.
+- **CP4 consolidated:** original CP15–CP18 — cross-platform CI candidate, read-only Project 15 CP4 audit-file contract bridge, reproducibility/security staging audit, screenshots, GitHub handoff. CP4 Windows and actual source integration are pending validation. GitHub CI has NOT been run.
+
+This project should not claim completed original CP2–CP18 merely because starter placeholders exist. CP4 GitHub publication follows the user's final screenshot review and explicit approval.

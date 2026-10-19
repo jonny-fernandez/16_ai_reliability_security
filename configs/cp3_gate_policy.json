@@ -1,0 +1,25 @@
+{
+  "block_exact_below": 0.85,
+  "block_false_block_at": 0.34,
+  "block_on_any_false_allow": true,
+  "block_on_any_side_effect": true,
+  "block_on_high_risk_mismatch": true,
+  "block_on_missing_governance": true,
+  "min_cases": 20,
+  "policy_id": "cp3_locked_development_gate_v1",
+  "required_categories": {
+    "approval": 2,
+    "authorization": 8,
+    "injection": 6,
+    "legitimate": 2,
+    "unknown_resource": 2
+  },
+  "required_decisions": {
+    "ABSTAIN": 2,
+    "ALLOW": 5,
+    "DENY": 11,
+    "REVIEW": 2
+  },
+  "schema_version": "1.0",
+  "warn_exact_below": 0.95
+}
