@@ -1,6 +1,6 @@
 # CP4 — Offline validation, cross-project evidence bridge, and safe release gates
 
-**Phase: CP4 Windows prepublication validation PASSED (118 tests, no skips; candidate audit zero findings). Actual Git-index audit, publication, and hosted CI are PENDING.**
+**Phase: CP4 Windows validation PASSED (118 tests, 0 skips); Git-index audit PASSED (96 paths / 0 findings); public repository published; initial-commit Ubuntu and Windows CI PASSED. Screenshot/documentation update and verification of CI on the final commit remain pending.**
 
 ## Evidence / tests
 
@@ -19,7 +19,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\validate_cp4.ps1
 
 Inputs: the prior CP3 Python venv and dependencies. No new dependencies, no Java/Hadoop/Spark, no real API key. Generated output stays gitignored. The script DOES NOT stage, commit, push, register a GitHub repository, or make external calls. It does not alter Project 15.
 
-The CI workflow (`.github/workflows/quality-gates.yml`) runs on Ubuntu and Windows with Python 3.12, `pytest`, local evaluation/replay, real SHA-256 manifest check, and Git-index path + credential-pattern audit. Hosted CI has NOT been run or observed as of this candidate package.
+The CI workflow (`.github/workflows/quality-gates.yml`) runs on Ubuntu and Windows with Python 3.12, `pytest`, local evaluation/replay, real SHA-256 manifest check, and Git-index path + credential-pattern audit. The hosted Ubuntu and Windows jobs both passed on initial commit `7306971` (run `39185172801`, rerun #2). Verification on the screenshot/documentation update commit remains outstanding.
 
 ## Required upload after Windows run
 
@@ -37,7 +37,7 @@ The CI workflow (`.github/workflows/quality-gates.yml`) runs on Ubuntu and Windo
 - No GDPR/SOC2/compliance certification or demographic fairness can be claimed.
 - Hashes are unsigned and the reporter can rewrite reports and manifests.
 - The CP4 candidate scan tests its own working tree, while the staged-index audit is explicitly separate. CI cannot establish successful GitHub execution without a real run.
-- Screenshot privacy, actual CI, license, staging audit and publication approval remain outstanding.
+- The staged Git-index audit, MIT/publication approval, repository creation, and first hosted CI pass are complete. Screenshot privacy must still be reviewed; verify CI again after the final screenshot/documentation commit.
 
 
 ## User-verified stage summary (October 18, 2026)
@@ -48,4 +48,4 @@ The CI workflow (`.github/workflows/quality-gates.yml`) runs on Ubuntu and Windo
 - Read-only real Project 15 CP4 audit metadata imported; not a service/runtime integration.
 - Genuine Windows screenshots 01–06 saved by user in `screenshots/`.
 - Local synthetic results do **not** represent independent red-team performance, production availability, real model safety, cloud deployment, security certification or real release approval.
-- Next: exact allowlist staging + `--mode index` audit, manual PNG privacy inspection, commit/push only when that gate passes, then hosted CI validation.
+- Completed subsequently: 96-path staged-index audit with zero findings; owner-approved MIT/public GitHub publication; commit `7306971`; passing hosted Ubuntu and Windows CI. Next: publish genuine screenshot files `07` and `08`, update documentation, and verify CI on the new pushed commit.
